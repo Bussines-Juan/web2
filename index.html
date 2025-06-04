@@ -217,45 +217,45 @@
         <p>2025 Estilo unico. Todos los derechos estan reservados<br>Editorial: Juan Manuel Plascencia Alvarado.</p>
     </footer>
 <script>
-    
-    document.getElementById('cart-form').addEventListener('submit', function (e) {
-      e.preventDefault();
-  
-      const name = document.getElementById('product-name').value;
-      const size = document.getElementById('product-size').value;
-      const price = parseFloat(document.getElementById('product-price').value);
-      const qty = parseInt(document.getElementById('product-qty').value);
-      const total = (price * qty).toFixed(2);
-  
-      const table = document.getElementById('cart-body');
-      const row = table.insertRow();
-  
-      row.innerHTML = `
-        <td style="padding:10px; border:1px solid #ccc;">${name}</td>
-        <td style="padding:10px; border:1px solid #ccc;">${size}</td>
-        <td style="padding:10px; border:1px solid #ccc;">$${price.toFixed(2)}</td>
-        <td style="padding:10px; border:1px solid #ccc;">${qty}</td>
-        <td style="padding:10px; border:1px solid #ccc;">$${total}</td>
-        <td style="padding:10px; border:1px solid #ccc; text-align: center;">
-          <button onclick="eliminarProducto(this)" style="padding: 5px 10px; background-color: #e74c3c; color: white; border: none; border-radius: 5px;">X</button>
-        </td>
-      `;
-  
-      document.getElementById('cart-form').reset();
-    });
-  
+  document.getElementById('cart-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('product-name').value;
+    const size = document.getElementById('product-size').value;
+    const price = parseFloat(document.getElementById('product-price').value);
+    const qty = parseInt(document.getElementById('product-qty').value);
+    const total = (price * qty).toFixed(2);
+
+    const table = document.getElementById('cart-body');
+    const row = table.insertRow();
+
+    row.innerHTML = `
+      <td style="padding:10px; border:1px solid #ccc;">${name}</td>
+      <td style="padding:10px; border:1px solid #ccc;">${size}</td>
+      <td style="padding:10px; border:1px solid #ccc;">$${price.toFixed(2)}</td>
+      <td style="padding:10px; border:1px solid #ccc;">${qty}</td>
+      <td style="padding:10px; border:1px solid #ccc;">$${total}</td>
+      <td style="padding:10px; border:1px solid #ccc; text-align: center;">
+        <button onclick="eliminarProducto(this)" style="padding: 5px 10px; background-color: #e74c3c; color: white; border: none; border-radius: 5px;">X</button>
+      </td>
+    `;
+
+    document.getElementById('cart-form').reset();
+  });
+
+
+  function eliminarProducto(boton) {
+    const fila = boton.parentElement.parentElement;
+    fila.remove();
+  }
+
  
-    function EliminarProducto(boton) {
-      const fila = boton.parentElement.parentElement;
-      fila.remove();
-    }
-  
-  
-    function EliminarCarrito() {
-      const tabla = document.getElementById('cart-body');
-      tabla.innerHTML = ""; 
-    }
-  </script>
+  function vaciarCarrito() {
+    const tabla = document.getElementById('cart-body');
+    tabla.innerHTML = "";
+  }
+</script>
+
 
 </body>
 </html>
